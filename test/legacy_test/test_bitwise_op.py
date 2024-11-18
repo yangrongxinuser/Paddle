@@ -349,6 +349,115 @@ class TestBitwiseXorBool(TestBitwiseXor):
         self.inputs = {'X': x, 'Y': y}
         self.outputs = {'Out': out}
 
+# ----------------- TEST OP: BitwiseRxor ---------------- #
+class TestBitwiseRxor(OpTest):
+    def setUp(self):
+        self.op_type = "bitwise_rxor"
+        self.python_api = paddle.tensor.logic.bitwise_rxor
+
+        self.init_dtype()
+        self.init_shape()
+        self.init_bound()
+
+        x = np.random.randint(
+            self.low, self.high, self.x_shape, dtype=self.dtype
+        )
+        y = np.random.randint(
+            self.low, self.high, self.y_shape, dtype=self.dtype
+        )
+        out = np.bitwise_rxor(x, y)
+
+        self.inputs = {'X': x, 'Y': y}
+        self.outputs = {'Out': out}
+
+    def test_check_output(self):
+        self.check_output(
+            check_cinn=True, check_pir=True, check_symbol_infer=False
+        )
+
+    def test_check_grad(self):
+        pass
+
+    def init_dtype(self):
+        self.dtype = np.int32
+
+    def init_shape(self):
+        self.x_shape = [2, 3, 4, 5]
+        self.y_shape = [2, 3, 4, 5]
+
+    def init_bound(self):
+        self.low = -100
+        self.high = 100
+
+
+class TestBitwiseRxor_ZeroDim1(TestBitwiseXor):
+    def init_shape(self):
+        self.x_shape = []
+        self.y_shape = []
+
+
+class TestBitwisRxor_ZeroDim2(TestBitwiseXor):
+    def init_shape(self):
+        self.x_shape = [2, 3, 4, 5]
+        self.y_shape = []
+
+
+class TestBitwiseRxor_ZeroDim3(TestBitwiseXor):
+    def init_shape(self):
+        self.x_shape = []
+        self.y_shape = [2, 3, 4, 5]
+
+
+class TestBitwiseRxorUInt8(TestBitwiseXor):
+    def init_dtype(self):
+        self.dtype = np.uint8
+
+    def init_bound(self):
+        self.low = 0
+        self.high = 100
+
+
+class TestBitwiseRxorInt8(TestBitwiseXor):
+    def init_dtype(self):
+        self.dtype = np.int8
+
+    def init_shape(self):
+        self.x_shape = [4, 5]
+        self.y_shape = [2, 3, 4, 5]
+
+
+class TestBitwiseRxorInt16(TestBitwiseXor):
+    def init_dtype(self):
+        self.dtype = np.int16
+
+    def init_shape(self):
+        self.x_shape = [2, 3, 4, 5]
+        self.y_shape = [4, 1]
+
+
+class TestBitwiseRxorInt64(TestBitwiseXor):
+    def init_dtype(self):
+        self.dtype = np.int64
+
+    def init_shape(self):
+        self.x_shape = [1, 4, 1]
+        self.y_shape = [2, 3, 4, 5]
+
+
+class TestBitwiseRxorBool(TestBitwiseXor):
+    def setUp(self):
+        self.op_type = "bitwise_rxor"
+        self.python_api = paddle.tensor.logic.bitwise_rxor
+
+        self.init_shape()
+
+        x = np.random.choice([True, False], self.x_shape)
+        y = np.random.choice([True, False], self.y_shape)
+        out = np.bitwise_rxor(x, y)
+
+        self.inputs = {'X': x, 'Y': y}
+        self.outputs = {'Out': out}
+
 
 # ---------------  TEST OP: BitwiseNot ----------------- #
 class TestBitwiseNot(OpTest):
