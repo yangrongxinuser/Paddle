@@ -1289,6 +1289,43 @@ def bitwise_or(
         op_name="bitwise_or", x=x, y=y, name=name, out=out, binary_op=True
     )
 
+def bitwise_ror(
+    x: Tensor, y: Tensor, out: Tensor | None = None, name: str | None = None
+) -> Tensor:
+    r"""
+
+    Apply ``bitwise_or`` on Tensor ``X`` and ``Y`` .
+
+    .. math::
+        Out = X | Y
+
+    Note:
+        ``paddle.bitwise_or`` supports broadcasting. If you want know more about broadcasting, please refer to please refer to `Introduction to Tensor`_ .
+
+        .. _Introduction to Tensor: ../../guides/beginner/tensor_en.html#chapter5-broadcasting-of-tensor
+
+    Args:
+        x (Tensor): Input Tensor of ``bitwise_or`` . It is a N-D Tensor of bool, uint8, int8, int16, int32, int64.
+        y (Tensor): Input Tensor of ``bitwise_or`` . It is a N-D Tensor of bool, uint8, int8, int16, int32, int64.
+        out (Tensor|None, optional): Result of ``bitwise_or`` . It is a N-D Tensor with the same data type of input Tensor. Default: None.
+        name (str|None, optional): The default value is None.  Normally there is no need for
+            user to set this property.  For more information, please refer to :ref:`api_guide_Name`.
+
+    Returns:
+        Tensor: Result of ``bitwise_or`` . It is a N-D Tensor with the same data type of input Tensor.
+
+    Examples:
+        .. code-block:: python
+
+            >>> import paddle
+            >>> x = paddle.to_tensor([-5, -1, 1])
+            >>> y = paddle.to_tensor([4,  2, -3])
+            >>> res = paddle.bitwise_or(x, y)
+            >>> print(res)
+            Tensor(shape=[3], dtype=int64, place=Place(cpu), stop_gradient=True,
+            [-1, -1, -3])
+    """
+    return bitwise_or(y,x)
 
 @inplace_apis_in_dygraph_only
 def bitwise_or_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
@@ -1303,6 +1340,13 @@ def bitwise_or_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
         )
     if in_dynamic_mode():
         return _C_ops.bitwise_or_(x, y)
+
+def bitwise_ror_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
+    r"""
+    Inplace version of ``bitwise_or`` API, the output Tensor will be inplaced with input ``x``.
+    Please refer to :ref:`api_paddle_bitwise_or`.
+    """
+    return bitwise_or_(y,x)
 
 
 def bitwise_xor(
