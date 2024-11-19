@@ -868,7 +868,7 @@ magic_method_func = [
     ('__and__', 'bitwise_and'),
     ('__or__', 'bitwise_or'),
     ('__xor__', 'bitwise_xor'),
-    ('__rxor__', 'bitwise_rxor')
+    ('__rxor__', '__rxor__')
     ('__invert__', 'bitwise_not'),
     ('__pos__', 'positive'),
     ('__lshift__', '__lshift__'),

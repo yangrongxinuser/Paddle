@@ -1347,7 +1347,7 @@ def bitwise_xor(
         op_name="bitwise_xor", x=x, y=y, name=name, out=out, binary_op=True
     )
 
-def bitwise_rxor(
+def __rxor__(
     x: Tensor, y: Tensor, out: Tensor | None = None, name: str | None = None
 ) -> Tensor:
     r"""
@@ -1376,7 +1376,7 @@ def bitwise_rxor(
         .. code-block:: python
 
             >>> import paddle
-            >>> x = paddle.to_tensor([-5, -1, 1])
+            >>> x = 1
             >>> y = paddle.to_tensor([4,  2, -3])
             >>> res = paddle.bitwise_xor(x, y)
             >>> print(res)
@@ -1401,12 +1401,7 @@ def bitwise_xor_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
     if in_dynamic_mode():
         return _C_ops.bitwise_xor_(x, y)
 
-def bitwise_rxor_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
-    r"""
-    Inplace version of ``bitwise_xor`` API, the output Tensor will be inplaced with input ``x``.
-    Please refer to :ref:`api_paddle_bitwise_xor`.
-    """
-    return bitwise_xor_(y,x)
+
 
 
 def bitwise_not(
