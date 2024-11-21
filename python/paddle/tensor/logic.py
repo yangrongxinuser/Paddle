@@ -1347,6 +1347,7 @@ def bitwise_xor(
         op_name="bitwise_xor", x=x, y=y, name=name, out=out, binary_op=True
     )
 
+
 def __rxor__(
     x: Tensor, y: Tensor, out: Tensor | None = None, name: str | None = None
 ) -> Tensor:
@@ -1383,8 +1384,7 @@ def __rxor__(
             Tensor(shape=[3], dtype=int64, place=Place(cpu), stop_gradient=True,
             [-1, -3, -4])
     """
-    return bitwise_xor(y,x)
-
+    return bitwise_xor(y, x)
 
 
 @inplace_apis_in_dygraph_only
@@ -1400,8 +1400,6 @@ def bitwise_xor_(x: Tensor, y: Tensor, name: str | None = None) -> Tensor:
         )
     if in_dynamic_mode():
         return _C_ops.bitwise_xor_(x, y)
-
-
 
 
 def bitwise_not(

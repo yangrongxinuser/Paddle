@@ -350,7 +350,6 @@ class TestBitwiseXorBool(TestBitwiseXor):
         self.outputs = {'Out': out}
 
 
-
 # ---------------  TEST OP: BitwiseNot ----------------- #
 class TestBitwiseNot(OpTest):
     def setUp(self):
