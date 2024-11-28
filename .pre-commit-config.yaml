@@ -13,6 +13,7 @@ repos:
     rev: v4.4.0
     hooks:
     -   id: check-added-large-files
+    -   id: check-merge-conflict
     -   id: check-symlinks
     -   id: detect-private-key
     -   id: end-of-file-fixer
