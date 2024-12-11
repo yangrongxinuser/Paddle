@@ -5770,6 +5770,19 @@ def tensordot(
     r"""
     This function computes a contraction, which sum the product of elements from two tensors along the given axes.
 
+    The image illustrates a typical case of the tensordot operation.
+    It is possible to perform a dot product operation along one or more axes. The resulting tensor will have a shape that is the union of the dimensions of tensors A and B that do not participate in the dot product.
+    In the illustration, a tensor a with shape = [2, 2, 2] and a tensor b with shape = [2, 3] are shown.
+    The resulting tensor res with shape = [2, 2, 3] is the result of contracting a and b along the last axis of a and the first axis of b.
+    The operation is performed as follows:
+    res = paddle.tensordot(x, y, axes=1).
+
+    .. image:: https://githubraw.cdn.bcebos.com/PaddlePaddle/docs/develop/docs/images/api_legend/tensordot.png
+        :width: 500
+        :alt: legend of tensordot API
+        :align: center
+
+
     Args:
         x (Tensor): The left tensor for contraction with data type ``float16`` or ``float32`` or ``float64``.
         y (Tensor): The right tensor for contraction with the same data type as ``x``.
