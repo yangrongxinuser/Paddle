@@ -6128,9 +6128,9 @@ def repeat_interleave(
     the entries in ``repeats`` which is a int or a Tensor.
 
     The image illustrates a typical case of the repeat_interleave operation.
-    Given a tensor [[1, 2, 3], [4, 5, 6]], with the repeat counts repeats = [3, 2, 1] and parameter axis = 1, it means that the elements in the 1st column are repeated 3 times, the 2nd column is repeated 2 times, and the 3rd column is repeated 1 time.
+    Given a tensor ``[[1, 2, 3], [4, 5, 6]]``, with the repeat counts ``repeats = [3, 2, 1]`` and parameter ``axis = 1``, it means that the elements in the 1st column are repeated 3 times, the 2nd column is repeated 2 times, and the 3rd column is repeated 1 time.
 
-    The final output is a 2D tensor: [[1, 1, 1, 2, 2, 3], [4, 4, 4, 5, 5, 6]].
+    The final output is a 2D tensor: ``[[1, 1, 1, 2, 2, 3], [4, 4, 4, 5, 5, 6]]``.
 
     .. image:: https://githubraw.cdn.bcebos.com/PaddlePaddle/docs/develop/docs/images/api_legend/repeat_interleave.png
         :width: 500
