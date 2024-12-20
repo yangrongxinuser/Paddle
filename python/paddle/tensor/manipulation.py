@@ -4756,7 +4756,7 @@ def expand(x: Tensor, shape: ShapeLike, name: str | None = None) -> Tensor:
     Both the number of dimensions of ``x`` and the number of elements in ``shape`` should be less than or equal to 6. And the number of dimensions of ``x`` should be less than the number of elements in ``shape``. The dimension to expand must have a value 0.
 
     The image illustrates a typical case of the expand operation.
-    The Original Tensor is a 1D tensor with shape [3] and values [1, 2, 3]. Using the paddle.expand method with the parameter shape = [2, 3], it is broadcasted and expanded into a 2D tensor with shape [2, 3]
+    The Original Tensor is a 1D tensor with shape ``[3]`` and values [1, 2, 3]. Using the ``paddle.expand`` method with the parameter ``shape = [2, 3]``, it is broadcasted and expanded into a 2D tensor with shape ``[2, 3]``
 
     .. image:: https://githubraw.cdn.bcebos.com/PaddlePaddle/docs/develop/docs/images/api_legend/expand.png
         :width: 500
