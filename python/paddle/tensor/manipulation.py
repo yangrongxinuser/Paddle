@@ -5090,7 +5090,7 @@ def masked_scatter(
     The `value` should have at least as many elements as the number of ones in `mask`.
 
     The image illustrates a typical case of the masked_scatter operation.
-      
+
       1. Tensor  ``value``: Contains the data to be filled into the target tensor. Only the parts where the mask is True will take values from the value tensor, while the rest will be ignored;
       2. Tensor  ``mask``: Specifies which positions should extract values from the value tensor and update the target tensor. True indicates the corresponding position needs to be updated;
       3. Tensor  ``origin``: The input tensor, where only the parts satisfying the mask will be replaced, and the rest remains unchanged;
